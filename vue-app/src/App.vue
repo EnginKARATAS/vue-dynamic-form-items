@@ -1,78 +1,53 @@
 <template>
   <div>
-    <UnknownAppRule :values="resp" />
-    <el-button>Default</el-button>
-    <el-button @click="currentComponent = 'UnknownAppCollectionList'"
-      >UnknownAppCollectionList</el-button
-    >
-    <el-button @click="currentComponent = 'UnknownAppRule'"
-      >UnknownAppRule</el-button
-    >
-    <component :is="tabs[currentTab]"></component>
+    <div class="manage">
+      <input type="text" v-model="textInput" />
+      <el-button @click="addNewItem(textInput)">Add</el-button>
+    </div>
+    <ul>
+      <li v-for="(item, index) in items" index="index">
+        <div class="item">
+          {{ index }}, {{ item.value }}
+          <el-button class="del" @click="deleteItem(item)">❌</el-button>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 <script setup>
-import UnknownAppCollectionList from "./pages/UnknownAppCollectionList/index.vue";
-import UnknownAppRule from "./pages/UnknownAppRule/index.vue";
-import { computed, ref } from "vue";
-const currentComponent = ref("UnknownAppCollectionList");
-const tabs = {
-  UnknownAppRule,
-  UnknownAppCollectionList,
+import dataApi from "./utils/mock_service";
+import { ref } from "vue";
+let items = ref([{ value: "cat" }, { value: "dog" }, { value: "elephant" }]);
+let addNewItem = (textInput) => {
+  items.value.push({ value: textInput });
 };
-const resp = {
-  sourceConfig: [
-    {
-      sourceConfigId: 1, //Manual import risk
-      collectionPriority: 2,
-      sourceConfigRule: [
-        {
-          ruleNameId: "1//Ranking of Installed Units",
-          isSort: true,
-          limitRange: "text",
-        },
-        {
-          ruleNameId: "2//Avarage Daily Usage Duration",
-          isSort: true,
-          limitRange: "text",
-        },
-      ],
-    },
-    {
-      sourceConfigId: 2, //Comprehensive Judgement
-      collectionPriority: 2,
-      sourceConfigRule: [
-        {
-          ruleNameId: "3//Daily Install Quantity",
-          isSort: true,
-          limitRange: "text",
-        },
-      ],
-    },
-  ],
-  configrationQuantityCollecting: 1000,
-  taskDuration: 15,
-  configrationQuantityPriority: {
-    sourceConfig: {
-      sourceConfigId: 2,
-      requirementSource: ["Collection List", 456, "Ranking of Installed Units"],
-      collectionPriority: [789, 101, "Rule Name"],
-      sourceConfigRule: {
-        sourceConfigRuleId: 202,
-        ruleName: ["Sort", 303, "Limit Range"],
-      },
-    },
-  },
-  sliderPriority: {
-    sliderPriorityId: 303,
-    priority: [101, 202, "Daily install quantity"],
-  },
-  sourceConfigRuleId: 404,
-  ruleName: ["System Rules", 505, "Average daily usage duration"],
-  sort: true,
-  limitRange: {
-    limitRangeStart: "300 seconds",
-    limitRangeEnd: "600 seconds",
-  },
+let deleteItem = (deleteIndex) => {
+  const index = items.value.findIndex((val) => val.value === deleteIndex.value);
+  console.table(items.value)
+  console.log("🚀 ~ deleteItem ~ index:", index)
+  console.table(items.value)
+  items.value = items.value.splice(index, 1)
 };
 </script>
+<style>
+.del {
+  justify-content: flex-end;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #856c8d;
+  padding: 10px;
+  width: 300px;
+  margin: -10px 0 0 -20px;
+}
+.manage {
+  padding: 20px;
+  width: 300px;
+}
+li {
+  list-style-type: none;
+  padding: 0px;
+}
+</style>
