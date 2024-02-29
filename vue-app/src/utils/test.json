@@ -1,0 +1,20 @@
+{
+    "unknownAppCollectionAndUpload": {
+    "unknownAppCollectionList": {"tab1Object":"tab1Globalization"},
+    "unknownAppCollectionRule":{
+    "scrcTitle": "Requirement Source Collection Rule Configuration",
+    "requirementSource": "Requirement Source",
+    "collectionPriority": "Collection Priority",
+    "ruleName": "Rule Name",
+    "sort": "Sort",
+    "limitRange": "Limit Range",
+    "addRule": "+Add Rule",
+    "addRequirementSource": "+Add Requirement Source",
+    "configurationOfTheQuantityForCollecting": "Configuration of the quantity for collecting (Effective the next day")": ",
+    "configurationOfTheQuantityOfEachPriorityForCollecting": "Configuration of the quantity of each priority for collecting (Effective the next day")": ",
+    "addCollectionPriority": "+Add Collection Priority",
+    "confirm": "Confirm",
+    "modificationHistory": "Modification History" 
+    }
+    }
+}

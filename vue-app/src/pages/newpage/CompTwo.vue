@@ -1,0 +1,1 @@
+<template><h1>comp two</h1></template>

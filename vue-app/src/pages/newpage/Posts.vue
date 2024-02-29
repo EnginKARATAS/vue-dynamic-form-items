@@ -1,0 +1,1 @@
+<template><h1>posts</h1></template>

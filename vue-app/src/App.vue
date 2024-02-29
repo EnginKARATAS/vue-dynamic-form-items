@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <newwapge></newwapge>
+  <!-- <div>
     <div class="manage">
       <input type="text" v-model="textInput" />
       <el-button @click="addNewItem(textInput)">Add</el-button>
@@ -12,9 +13,10 @@
         </div>
       </li>
     </ul>
-  </div>
+  </div> -->
 </template>
 <script setup>
+import newwapge from "./pages/newpage/index.vue"
 import dataApi from "./utils/mock_service";
 import { ref } from "vue";
 let items = ref([{ value: "cat" }, { value: "dog" }, { value: "elephant" }]);
